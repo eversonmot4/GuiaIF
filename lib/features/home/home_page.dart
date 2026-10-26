@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guiaif/core/theme/images.dart';
 import 'package:guiaif/features/home/widgets/quick_access_section.dart';
+import 'package:guiaif/features/home/data/quiz_card_content.dart';
+import 'package:guiaif/core/widgets/rotating_quiz_card.dart';
 
 // Página de início
 class HomePage extends StatelessWidget {
@@ -64,7 +66,13 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Widget do minijogo
+            RotatingQuizCard(
+              items: quizCardContent,
+              interval: const Duration(seconds: 8),
+              onTap: () {
+                // Navegar para a tela do minijogo
+              },
+            ),
 
             const SizedBox(height: 20),
 
