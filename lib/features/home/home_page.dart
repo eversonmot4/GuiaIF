@@ -5,6 +5,8 @@ import 'package:guiaif/core/theme/images.dart';
 import 'package:guiaif/features/home/widgets/quick_access_section.dart';
 import 'package:guiaif/features/home/data/quiz_card_content.dart';
 import 'package:guiaif/core/widgets/rotating_quiz_card.dart';
+import 'package:guiaif/core/widgets/official_document_card.dart';
+import 'package:guiaif/core/url_launcher/url_launcher.dart';
 
 // Página de início
 class HomePage extends StatelessWidget {
@@ -80,9 +82,15 @@ class HomePage extends StatelessWidget {
             // Acessos rápidos
             const QuickAccessSection(),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 70),
 
-            // Widget do documento completo
+            OfficialDocumentCard(
+              title: 'Quer conferir todos os detalhes?',
+              description: 'Consulte a versão integral publicada pelo IFMA.',
+              buttonText: 'Abrir documento original',
+              onPressed: openOfficialDocument,
+            ),
+
           ],
         ),
       ),

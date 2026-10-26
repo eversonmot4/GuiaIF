@@ -8,7 +8,7 @@ const List<QuizCardItem> quizCardContent = [
     title: 'Posso ou Não Posso?',
     description:
         'Determine com base no seu conhecimento sobre o '
-        'Regimento Estudantil quais atos são permitidos ou não.',
+        'Regimento Estudantil quais atos são permitidos.',
   ),
   (
     title: 'Você conhece as regras?',
