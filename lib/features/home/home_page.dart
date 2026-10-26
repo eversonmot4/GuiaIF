@@ -66,15 +66,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 15),
             RotatingQuizCard(
               items: quizCardContent,
-              interval: const Duration(seconds: 8),
+              interval: const Duration(seconds: 4),
               onTap: () {
                 // Navegar para a tela do minijogo
               },
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
 
             // Acessos rápidos
             const QuickAccessSection(),
