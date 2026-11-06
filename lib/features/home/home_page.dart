@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // Cabeçalho
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(50, 160, 65, 1),
+        backgroundColor: const Color(0xFF4C8C30),
         toolbarHeight: 80,
 
         title: Column(
