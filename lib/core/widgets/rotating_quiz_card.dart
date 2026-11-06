@@ -65,7 +65,7 @@ class _RotatingQuizCardState extends State<RotatingQuizCard> {
     final item = widget.items[currentIndex];
 
     return Material(
-      color: const Color(0xFF328526),
+      color: const Color(0xFF4C8C30),
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         onTap: widget.onTap,

@@ -1,0 +1,213 @@
+import 'package:flutter/material.dart';
+import 'widgets/card_reposta.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'widgets/card_game_01.dart';
+import 'package:guiaif/core/widgets/buttons_pass_alternativa.dart';
+import 'package:guiaif/core/widgets/fundo_verde.dart';
+
+class Game01 extends StatefulWidget {
+  const Game01({super.key});
+
+  @override
+  State<Game01> createState() => _Game01State();
+}
+
+class _Game01State extends State<Game01> {
+  int _cardAtual = 1;
+  final int _totalCards = 10;
+  String? _selectedOption;
+  bool _questionVisible = true;
+  bool _mostrarCardResp = true;
+  String respostaCorreta = 'A';
+
+  void _proximoCard() {
+    if (_cardAtual < _totalCards) {
+      setState(() {
+        _cardAtual++;
+        _selectedOption = null;
+        _questionVisible = true;
+      });
+    }
+  }
+
+  void _cardAnterior() {
+    if (_cardAtual > 1) {
+      setState(() {
+        _cardAtual--;
+        _selectedOption = null;
+        _questionVisible = true;
+      });
+    }
+  }
+
+  void _selecionarOpcao(String? opcao) {
+    setState(() {
+      _selectedOption = opcao;
+
+    });
+
+    _verificaResp(opcao);
+  }
+
+  void _verificaResp(String? resp){
+    if(resp == respostaCorreta ){
+      setState(() {
+        _questionVisible = !_questionVisible;
+        _mostrarCardResp = true;
+      });
+    }else{
+      setState(() {
+        _questionVisible = !_questionVisible;
+        _mostrarCardResp = false;
+      });
+    }
+  }
+
+  void _onTap(){
+    setState(() {
+        _questionVisible = !_questionVisible;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 2,
+        shadowColor: Colors.black.withValues(alpha: 0.1),
+        surfaceTintColor: Colors.white,
+        toolbarHeight: 65,
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.arrow_back, color: Colors.black87),
+        // ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Posso ou não Posso?",
+              style: GoogleFonts.openSans(
+                fontSize: 19,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              "Mini game interativo",
+              style: GoogleFonts.openSans(
+                fontSize: 13,
+                fontWeight: FontWeight.normal,
+                color: Colors.black87,
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Stack(
+        children: [
+          BackgroundGreen(),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                children: [
+                  const SizedBox(height: 18),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Text(
+                      "Determine com base no seu conhecimento sobre o Regimento estudantil quais atos são permitidos ou não.",
+                      style: GoogleFonts.openSans(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        height: 1.4,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Stack(
+                          alignment: Alignment.center,
+                          clipBehavior: Clip.none,
+                          children: [
+                            Transform.rotate(
+                              angle: -0.04,
+                              child: Container(
+                                width: 310,
+                                height: constraints.maxHeight - 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withValues(alpha: 0.9),
+                                  borderRadius: BorderRadius.circular(8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withValues(alpha: 0.08),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Transform.rotate(
+                              angle: 0.04,
+                              child: Container(
+                                width: 310,
+                                height: constraints.maxHeight - 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withValues(alpha: 0.9),
+                                  borderRadius: BorderRadius.circular(8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withValues(alpha: 0.08),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            _questionVisible?
+                            Cardgame01(
+                              cardAtual: _cardAtual,
+                              totalCards: _totalCards,
+                              selectedOption: _selectedOption,
+                              onSelectOption: _selecionarOpcao,
+                            ):
+                            Cardgame01resposta(respCorreta: _mostrarCardResp, onTap: _onTap,),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ButtonpassCard(
+                          icon: Icons.arrow_back,
+                          onPressed: _cardAnterior,
+                        ),
+                        ButtonpassCard(
+                          icon: Icons.arrow_forward,
+                          onPressed: _proximoCard,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

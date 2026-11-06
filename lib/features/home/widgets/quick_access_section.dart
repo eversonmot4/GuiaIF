@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guiaif/features/game01/game_01.dart';
 
 // Seção de acessos rápidos
 class QuickAccessSection extends StatelessWidget {
@@ -11,7 +12,9 @@ class QuickAccessSection extends StatelessWidget {
         title: 'Posso ou não posso?',
         icon: Icons.quiz_outlined,
         onTap: () {
-          // Navegar para o minijogo
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Game01();
+          },));
         },
       ),
       (
@@ -85,7 +88,7 @@ class QuickAccessSection extends StatelessWidget {
                       Icon(
                         item.icon,
                         size: 28,
-                        color: const Color(0xFF328526),
+                        color: const Color(0xFF4C8C30),
                       ),
 
                       const Spacer(),

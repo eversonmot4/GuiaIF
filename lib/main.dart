@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'GuiaIF',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        // primarySwatch: Colors.green,
         textTheme: GoogleFonts.openSansTextTheme(),
       ),
       home: const HomePage(),

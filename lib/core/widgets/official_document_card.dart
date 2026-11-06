@@ -20,7 +20,7 @@ class OfficialDocumentCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFF328526),
+        color: const Color(0xFF4C8C30),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -86,7 +86,7 @@ class OfficialDocumentCard extends StatelessWidget {
               label: Text(buttonText),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: const Color(0xFF328526),
+                foregroundColor: const Color(0xFF4C8C30),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
