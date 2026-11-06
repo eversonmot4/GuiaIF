@@ -79,10 +79,7 @@ class _Game01State extends State<Game01> {
         shadowColor: Colors.black.withValues(alpha: 0.1),
         surfaceTintColor: Colors.white,
         toolbarHeight: 65,
-        // leading: IconButton(
-        //   onPressed: () {},
-        //   icon: const Icon(Icons.arrow_back, color: Colors.black87),
-        // ),
+        
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -108,7 +105,7 @@ class _Game01State extends State<Game01> {
       ),
       body: Stack(
         children: [
-          BackgroundGreen(),
+          BackgroundGreen(), //fundo_verde
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),

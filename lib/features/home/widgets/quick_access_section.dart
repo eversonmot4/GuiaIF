@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guiaif/features/game01/game_01.dart';
+import 'package:guiaif/features/game02/game_02.dart';
+
 
 // Seção de acessos rápidos
 class QuickAccessSection extends StatelessWidget {
@@ -21,7 +23,9 @@ class QuickAccessSection extends StatelessWidget {
         title: 'Qual é a gravidade?',
         icon: Icons.gavel_outlined,
         onTap: () {
-          // Navegar para classificação
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Game02();
+          },));
         },
       ),
       (
