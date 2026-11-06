@@ -3,6 +3,7 @@ import 'widgets/card_reposta.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'widgets/card_game_01.dart';
 import 'package:guiaif/core/widgets/buttons_pass_alternativa.dart';
+import 'package:guiaif/core/widgets/fundo_verde.dart';
 
 class Game01 extends StatefulWidget {
   const Game01({super.key});
@@ -15,13 +16,16 @@ class _Game01State extends State<Game01> {
   int _cardAtual = 1;
   final int _totalCards = 10;
   String? _selectedOption;
-  final bool mostrarResp = true;
+  bool _questionVisible = true;
+  bool _mostrarCardResp = true;
+  String respostaCorreta = 'A';
 
   void _proximoCard() {
     if (_cardAtual < _totalCards) {
       setState(() {
         _cardAtual++;
         _selectedOption = null;
+        _questionVisible = true;
       });
     }
   }
@@ -31,6 +35,7 @@ class _Game01State extends State<Game01> {
       setState(() {
         _cardAtual--;
         _selectedOption = null;
+        _questionVisible = true;
       });
     }
   }
@@ -38,6 +43,29 @@ class _Game01State extends State<Game01> {
   void _selecionarOpcao(String? opcao) {
     setState(() {
       _selectedOption = opcao;
+
+    });
+
+    _verificaResp(opcao);
+  }
+
+  void _verificaResp(String? resp){
+    if(resp == respostaCorreta ){
+      setState(() {
+        _questionVisible = !_questionVisible;
+        _mostrarCardResp = true;
+      });
+    }else{
+      setState(() {
+        _questionVisible = !_questionVisible;
+        _mostrarCardResp = false;
+      });
+    }
+  }
+
+  void _onTap(){
+    setState(() {
+        _questionVisible = !_questionVisible;
     });
   }
 
@@ -80,17 +108,7 @@ class _Game01State extends State<Game01> {
       ),
       body: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            height: 195,
-            decoration: const BoxDecoration(
-              color: Color(0xFF4C8C30),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(50),
-                bottomRight: Radius.circular(50),
-              ),
-            ),
-          ),
+          BackgroundGreen(),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -153,14 +171,14 @@ class _Game01State extends State<Game01> {
                                 ),
                               ),
                             ),
-                            mostrarResp?
+                            _questionVisible?
                             Cardgame01(
                               cardAtual: _cardAtual,
                               totalCards: _totalCards,
                               selectedOption: _selectedOption,
                               onSelectOption: _selecionarOpcao,
                             ):
-                            Cardgame01resposta(respCorreta: true),
+                            Cardgame01resposta(respCorreta: _mostrarCardResp, onTap: _onTap,),
                           ],
                         );
                       },

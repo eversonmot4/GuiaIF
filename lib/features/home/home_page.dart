@@ -7,6 +7,7 @@ import 'package:guiaif/features/home/data/quiz_card_content.dart';
 import 'package:guiaif/core/widgets/rotating_quiz_card.dart';
 import 'package:guiaif/core/widgets/official_document_card.dart';
 import 'package:guiaif/core/url_launcher/url_launcher.dart';
+import 'package:guiaif/core/widgets/fundo_verde.dart';
 
 // Página de início
 class HomePage extends StatelessWidget {
