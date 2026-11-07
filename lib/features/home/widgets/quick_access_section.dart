@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:guiaif/features/game01/game_01.dart';
+import 'package:guiaif/features/game02/game_02.dart';
+import 'package:guiaif/features/game03/widget/gabinete.dart';
+import 'package:guiaif/features/guia_resumido/guiaresumido.dart';
+
 
 // Seção de acessos rápidos
 class QuickAccessSection extends StatelessWidget {
@@ -21,21 +25,26 @@ class QuickAccessSection extends StatelessWidget {
         title: 'Qual é a gravidade?',
         icon: Icons.gavel_outlined,
         onTap: () {
-          // Navegar para classificação
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return Game02();
+          },));
         },
       ),
       (
         title: 'Gabinete do Mediador',
         icon: Icons.groups_outlined,
         onTap: () {
-          // Navegar para o mediador
-        },
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return GabineteMediadorPage();
+          },));        },
       ),
       (
         title: 'Guia resumido',
         icon: Icons.menu_book_outlined,
         onTap: () {
-          // Navegar para o guia
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return GuiaResumidoPage();
+          },));
         },
       ),
     ];
