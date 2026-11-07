@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:guiaif/core/theme/app_colors.dart';
 import 'package:guiaif/core/theme/images.dart';
 import 'package:guiaif/features/home/widgets/quick_access_section.dart';
 import 'package:guiaif/features/home/data/quiz_card_content.dart';
 import 'package:guiaif/core/widgets/rotating_quiz_card.dart';
 import 'package:guiaif/core/widgets/official_document_card.dart';
 import 'package:guiaif/core/url_launcher/url_launcher.dart';
-import 'package:guiaif/core/widgets/fundo_verde.dart';
 
 // Página de início
 class HomePage extends StatelessWidget {
@@ -18,9 +17,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // Cabeçalho
       appBar: AppBar(
-        backgroundColor: const Color(0xFF4C8C30),
+        backgroundColor: AppColors.primary,
         toolbarHeight: 80,
-
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

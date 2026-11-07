@@ -89,7 +89,7 @@ class _RotatingQuizCardState extends State<RotatingQuizCard> {
                             alignment: Alignment.centerLeft,
                             children: [
                               ...previousChildren,
-                              if (currentChild != null) currentChild,
+                              ?currentChild,
                             ],
                           );
                         },
